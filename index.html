@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Timer!</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Timer!</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
     <nav class="controls">
       <a href="#" class="button" id="start">Start</a>
       <a href="#" class="button" id="stop">Stop</a>
     </nav>
     <div class="stopwatch"></div>
-    <ul class="results"></ul>
-    <script type="text/javascript" src="script-compiled.js"></script>
-  </body>
+    <nav class="controls">
+        <a href="#" class="button" id="reset">Reset</a>
+        <a href="#" class="button" id="to-list">To list</a>
+        <a href="#" class="button" id="reset-list">Reset list</a>
+      </nav>
+  </div>
+  <div class="list-container">
+  <h2 class="list-header">Result list:</h2>
+  <ul class="results"></ul>        
+</div>
+  <script type="text/javascript" src="script-compiled.js"></script>
+</body>
+
 </html>
