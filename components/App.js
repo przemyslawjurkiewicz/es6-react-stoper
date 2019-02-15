@@ -55,7 +55,7 @@ class App extends React.Component {
 
   toList = e => {
     this.setState(prevState => ({
-        timeList: [...prevState.timeList, this.state.times]
+       timeList: [...prevState.timeList, this.state.times]
       }))
     console.log(this.state.timeList)
   }
