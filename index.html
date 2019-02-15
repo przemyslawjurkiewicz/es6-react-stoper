@@ -9,23 +9,14 @@
 </head>
 
 <body>
-  <div class="container">
-    <nav class="controls">
-      <a href="#" class="button" id="start">Start</a>
-      <a href="#" class="button" id="stop">Stop</a>
-    </nav>
-    <div class="stopwatch"></div>
-    <nav class="controls">
-        <a href="#" class="button" id="reset">Reset</a>
-        <a href="#" class="button" id="to-list">To list</a>
-        <a href="#" class="button" id="reset-list">Reset list</a>
-      </nav>
-  </div>
-  <div class="list-container">
-  <h2 class="list-header">Result list:</h2>
-  <ul class="results"></ul>        
-</div>
-  <script type="text/javascript" src="script-compiled.js"></script>
+  <div id="app"></div>
+  <script type="text/javascript" src="./node_modules/babel-polyfill/dist/polyfill.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+
+  
+  <script type="text/babel" src="script1.js"></script>
 </body>
 
 </html>
