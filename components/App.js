@@ -8,7 +8,7 @@ class App extends React.Component {
         seconds: 0,
         miliseconds: 0
       },
-      timeList :[]
+      timeList: []
     };
   }
 
@@ -18,7 +18,8 @@ class App extends React.Component {
         minutes: 0,
         seconds: 0,
         miliseconds: 0
-      }
+      },
+      timeList: []
     });
   };
 
@@ -35,17 +36,17 @@ class App extends React.Component {
   };
 
   calculate = e => {
-    const times = this.state.times;
-    times.miliseconds += 1;
-    if (times.miliseconds >= 100) {
-      times.seconds += 1;
-      times.miliseconds = 0;
+    const time = this.state.times;
+    time.miliseconds += 1;
+    if (time.miliseconds >= 100) {
+      time.seconds += 1;
+      time.miliseconds = 0;
     }
-    if (times.seconds >= 60) {
-      times.minutes += 1;
-      times.seconds = 0;
+    if (time.seconds >= 60) {
+      time.minutes += 1;
+      time.seconds = 0;
     }
-    this.setState({ times });
+    this.setState({ time });
   };
 
   stop = e => {
@@ -53,10 +54,23 @@ class App extends React.Component {
     clearInterval(this.watch);
   };
 
+  pad0 = value => {
+    let result = value.toString();
+    if (result.length < 2) {
+      result = '0' + result;
+    }
+    return result;
+  };
+
+  time() {
+    return `${this.pad0(this.state.times.minutes)}:${this.pad0(this.state.times.seconds)}:${this.pad0(this.state.times.miliseconds)}`;
+  }
+
   toList = e => {
+    let time = this.time();
     this.setState(prevState => ({
-       timeList: [...prevState.timeList, this.state.times]
-      }))
+      timeList: [...prevState.timeList, time]
+    }))
     console.log(this.state.timeList)
   }
 
@@ -73,7 +87,9 @@ class App extends React.Component {
               Stop
             </a>
           </nav>
-          <ShowTime times={this.state.times} />
+          <div className="stopwatch">
+            {this.time()}
+          </div>
           <nav className="controls">
             <a href="#" className="button" onClick={this.reset}>
               Reset
@@ -81,14 +97,13 @@ class App extends React.Component {
             <a href="#" className="button" onClick={this.toList}>
               To list
             </a>
-            <a href="#" className="button" onClick={this.resetList}>
-              Reset list
-            </a>
           </nav>
         </div>
         <div className="list-container">
           <h2 className="list-header">Result list:</h2>
-         <Result times={this.state.timeList}/>
+          <ul className="results"> {(this.state.timeList || []).map(item => (
+            <li key={item}>{item}</li>
+          ))}</ul>
         </div>
       </div>
     );
